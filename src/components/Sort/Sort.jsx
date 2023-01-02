@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function Sort() {
+function Sort({ handleSort }) {
   const [open, setOpen] = useState(false);
   const [activeSort, setActiveSort] = useState(0);
-  const list = ["по полярности", "цене", "алфавиту"];
-  const sortName = list[activeSort];
+  const list = [
+    {name: "полярности", sortProperty: 'rating'},
+    {name: "полярности (по убыванию)", sortProperty: '-rating'},
+    {name: "цене", sortProperty: 'price'},
+    {name: "цене (по убыванию)", sortProperty: '-price'},
+    {name: "алфавиту", sortProperty: 'title'} 
+  ];
+  const sortName = list[activeSort].name;
+
+  useEffect(() => {
+    handleSort(list[activeSort]);
+  }, [activeSort]);
 
   const onClickSortItem = i => {
     setActiveSort(i);
@@ -33,14 +43,14 @@ function Sort() {
       {open && (
         <div className="sort__popup">
           <ul>
-            {list.map((sortItem, index) => {
+            {list.map((item, index) => {
               return (
                 <li
                   key={index}
                   onClick={() => onClickSortItem(index)}
                   className={activeSort === index ? "active" : ""}
                 >
-                  {sortItem}
+                  {item.name}
                 </li>
               );
             })}
