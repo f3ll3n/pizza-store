@@ -19,7 +19,7 @@ function Header({ searchValue, setSearchValue }) {
             </div>
           </div>
         </Link>
-        <Search setSearchValue={setSearchValue} searchValue={searchValue}/>
+        <Search setSearchValue={setSearchValue} searchValue={searchValue} />
         <div className="header__cart">
           <Link to="/Cart" className="button button--cart">
             <span>520 ₽</span>

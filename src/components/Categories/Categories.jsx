@@ -22,8 +22,7 @@ function Categories({ onSelectCategory }) {
               onClick={() => {
                 setActiveIndex(index);
                 onSelectCategory(index);
-              }
-              }
+              }}
               className={activeIndex === index ? "active" : ""}
             >
               {category}

@@ -4,11 +4,11 @@ function Sort({ handleSort }) {
   const [open, setOpen] = useState(false);
   const [activeSort, setActiveSort] = useState(0);
   const list = [
-    {name: "полярности", sortProperty: 'rating'},
-    {name: "полярности (по убыванию)", sortProperty: '-rating'},
-    {name: "цене", sortProperty: 'price'},
-    {name: "цене (по убыванию)", sortProperty: '-price'},
-    {name: "алфавиту", sortProperty: 'title'} 
+    { name: "полярности", sortProperty: "rating" },
+    { name: "полярности (по убыванию)", sortProperty: "-rating" },
+    { name: "цене", sortProperty: "price" },
+    { name: "цене (по убыванию)", sortProperty: "-price" },
+    { name: "алфавиту", sortProperty: "title" },
   ];
   const sortName = list[activeSort].name;
 
