@@ -37,7 +37,7 @@ const Home = ({ searchValue }) => {
   const pizzas = items.map((pizzaItem, index) => (
     <PizzaBlock {...pizzaItem} key={index} />
   ));
-  const skeletons = [...new Array(8)].map((_, index) => (
+  const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
   ));
   //TODO: Hide pagination if backend have < 2 pages
