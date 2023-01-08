@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
@@ -7,9 +9,11 @@ import Categories from "../components/Categories/Categories";
 import Sort from "../components/Sort/Sort";
 import Pagination from "../components/Pagination/Pagination";
 
-const Home = ({ searchValue }) => {
+const Home = () => {
   const categoryID = useSelector((state) => state.filter.category);
   const sortBy = useSelector(state => state.filter.sort);
+  const searchValue = useSelector(state => state.filter.search);
+
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,12 +36,15 @@ const Home = ({ searchValue }) => {
         setIsLoading(false);
       });
   }, [sortBy, categoryID, searchValue, currentPage]);
+
   const pizzas = items.map((pizzaItem, index) => (
     <PizzaBlock {...pizzaItem} key={index} />
   ));
+
   const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
   ));
+
   //TODO: Hide pagination if backend have < 2 pages
   return (
     <div className="container">
