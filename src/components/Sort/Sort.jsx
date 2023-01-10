@@ -11,7 +11,7 @@ function Sort() {
 
   const list = [
     { name: "полярности", sortProperty: "rating" },
-    { name: "полярности (по убыванию)", sortProperty: "-rating"},
+    { name: "полярности (по убыванию)", sortProperty: "-rating" },
     { name: "цене", sortProperty: "price" },
     { name: "цене (по убыванию)", sortProperty: "-price" },
     { name: "алфавиту", sortProperty: "title" },

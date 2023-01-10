@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   category: 0,
+  currentPage: 1,
   sort: {
     name: "полярности",
     sortProperty: "rating",
@@ -23,10 +24,14 @@ export const filterSlice = createSlice({
     setSearchValue: (state, action) => {
       state.search = action.payload;
     },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setCategory, setSort, setSearchValue } = filterSlice.actions;
+export const { setCategory, setSort, setSearchValue, setCurrentPage } =
+  filterSlice.actions;
 
 export default filterSlice.reducer;
