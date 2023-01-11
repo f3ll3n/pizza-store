@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
@@ -9,6 +9,22 @@ function Sort() {
   
   const [open, setOpen] = useState(false);
 
+  const sortRef = useRef()
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if(!event.path.includes(sortRef.current)){
+        setOpen(false)
+      }
+    };
+
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener('click', handleClickOutside);
+    }
+  }, [])
+
   const list = [
     { name: "полярности", sortProperty: "rating" },
     { name: "полярности (по убыванию)", sortProperty: "-rating" },
@@ -18,7 +34,7 @@ function Sort() {
   ];
 
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"

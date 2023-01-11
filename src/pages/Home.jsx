@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
@@ -38,16 +37,6 @@ const Home = () => {
       })
 
   }, [sortBy, categoryID, searchValue, currentPage]); 
-
-  useEffect(() => {
-    const queryString = qs.stringify({
-      sortProperty: sortBy.sortProperty,
-      categoryId: categoryID,
-      currentPage: currentPage
-    })
-
-    navigate(`?${queryString}`)
-  }, [sortBy, categoryID, searchValue, currentPage])
 
   const pizzas = items.map((pizzaItem, index) => (
     <PizzaBlock {...pizzaItem} key={index} />
