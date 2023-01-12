@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,9 +7,9 @@ import Categories from "../components/Categories/Categories";
 import Sort from "../components/Sort/Sort";
 import Pagination from "../components/Pagination/Pagination";
 import { setCurrentPage } from "../redux/slices/filterSlice";
+import { addItem } from "../redux/slices/cartSlice";
 
 const Home = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.filter.currentPage);
   const categoryID = useSelector((state) => state.filter.category);

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/slices/cartSlice";
 
 function PizzaBlock({ title, price, imageUrl, sizes, types }) {
+  const dispatch = useDispatch();
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
   const [activeTypeIndex, setActiveTypeIndex] = useState(0);
   const [count, setCount] = useState(0);
@@ -58,7 +61,18 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
                 fill="white"
               />
             </svg>
-            <span onClick={() => setCount(count + 1)}>Добавить</span>
+            <span onClick={() => {
+              setCount(count + 1);
+              dispatch(addItem({
+                title: title,
+                price: price,
+                size: activeSizeIndex,
+                type: activeTypeIndex,
+                value: 1,
+              }))
+              }}
+              >
+                Добавить</span>
             <i>{count}</i>
           </button>
         </div>
