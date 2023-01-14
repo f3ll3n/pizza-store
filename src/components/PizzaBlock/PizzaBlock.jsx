@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addItem } from "../../redux/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, iterateItem } from "../../redux/slices/cartSlice";
 
 function PizzaBlock({ title, price, imageUrl, sizes, types }) {
   const dispatch = useDispatch();
+  const cartItems = useSelector(state => state.cart.items);
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
   const [activeTypeIndex, setActiveTypeIndex] = useState(0);
   const [count, setCount] = useState(0);
   const typeNames = ["тонкое", "традиционное"];
+
+  const setItemId = (title, size, type) => {
+    let encoder = new TextEncoder();
+    return `${encoder.encode(title).join('')}_${size}_${type}`;
+  } 
 
   return (
     <div className="pizza-block_wrapper">
@@ -61,19 +67,35 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
                 fill="white"
               />
             </svg>
-            <span onClick={() => {
+            <span 
+            onClick={() => {
               setCount(count + 1);
-              dispatch(addItem({
-                title: title,
-                price: price,
-                size: activeSizeIndex,
-                type: activeTypeIndex,
-                value: 1,
-              }))
+              const id = setItemId(title, activeSizeIndex, activeTypeIndex);
+              let duplicate = [];
+              cartItems.forEach((item, index) => {
+                item.id === id && duplicate.push(index);
+              })
+              if(!duplicate.length){
+                dispatch(addItem({
+                  title: title,
+                  img: imageUrl,
+                  price: Math.round(price + (price * activeSizeIndex / 2)),
+                  size: activeSizeIndex,
+                  type: activeTypeIndex,
+                  value: 1,
+                  id: id,
+                }))
+              }
+              else{
+                dispatch(iterateItem({
+                  index: duplicate[0],
+                  price: Math.round(price + (price * activeSizeIndex / 2)),
+                }))
+              }
               }}
-              >
+            >
                 Добавить</span>
-            <i>{count}</i>
+              <i>{count}</i>
           </button>
         </div>
       </div>

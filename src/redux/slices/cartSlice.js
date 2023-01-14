@@ -5,41 +5,21 @@ const initialState = {
   items: [],
 };
 
-//TODO: Function with check on double by id
-// const checkOnDublicate = (items, id) => {
-//   if (!items.length) {
-//     return false;
-//   }
-//   const dublicate = [];
-//   items.forEach((item, index) => {
-//     console.log(item.id.includes(id));
-//     //  ? dublicate.push(index, item) : dublicate.push(false);
-//   });
-//   return dublicate.length === 2 ? dublicate : false;
-// };
-
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addItem: (state, action) => {
-      action.payload.id =
-        action.payload.title
-          .split("")
-          .map(char => char.charCodeAt(0))
-          .join("") +
-        "-" +
-        action.payload.size;
-      // if (checkOnDublicate(state.items, action.payload.id)) {
-      // console.log("Содержит");
-      // } else {
-      console.log("кликнуто");
       state.totalPrice += action.payload.price;
       state.items.push(action.payload);
-      // }
+    },
+    iterateItem: (state, action) => {
+      state.totalPrice += action.payload.price;
+      state.items[action.payload.index].price += action.payload.price;
+      state.items[action.payload.index].value += 1;
     },
     removeItem: (state, action) => {
-      state.items = state.items.filter(obj => obj.id !== action.payload);
+      state.items = state.items.filter(obj => obj.id !== action.payload[0]);
     },
     clearItems: state => {
       state.items = [];
@@ -47,7 +27,7 @@ export const cartSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { addItem, removeItem, clearItems } = cartSlice.actions;
+export const { addItem, iterateItem, removeItem, clearItems } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
