@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, iterateItem } from "../../redux/slices/cartSlice";
+import { addItem, incrementItem } from "../../redux/slices/cartSlice";
 
 function PizzaBlock({ title, price, imageUrl, sizes, types }) {
   const dispatch = useDispatch();
@@ -87,7 +87,7 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
                 }))
               }
               else{
-                dispatch(iterateItem({
+                dispatch(incrementItem({
                   index: duplicate[0],
                   price: Math.round(price + (price * activeSizeIndex / 2)),
                 }))
