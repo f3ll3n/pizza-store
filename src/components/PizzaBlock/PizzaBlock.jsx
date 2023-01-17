@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, incrementItem } from "../../redux/slices/cartSlice";
 
-function PizzaBlock({ title, price, imageUrl, sizes, types }) {
+
+//TODO: ID!!!
+function PizzaBlock({ title, price, imageUrl, sizes, types, id }) {
   const dispatch = useDispatch();
   const cartItems = useSelector(state => state.cart.items);
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
@@ -10,10 +12,7 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
   const [count, setCount] = useState(0);
   const typeNames = ["тонкое", "традиционное"];
 
-  const setItemId = (title, size, type) => {
-    let encoder = new TextEncoder();
-    return `${encoder.encode(title).join('')}_${size}_${type}`;
-  } 
+
 
   return (
     <div className="pizza-block_wrapper">
@@ -70,11 +69,11 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
             <span 
             onClick={() => {
               setCount(count + 1);
-              const id = setItemId(title, activeSizeIndex, activeTypeIndex);
               let duplicate = [];
               cartItems.forEach((item, index) => {
-                item.id === id && duplicate.push(index);
+                (Number(item.id.split('_')[0]) === id && item.size === activeSizeIndex && item.type === activeTypeIndex) && duplicate.push(index);
               })
+
               if(!duplicate.length){
                 dispatch(addItem({
                   title: title,
@@ -83,7 +82,7 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
                   size: activeSizeIndex,
                   type: activeTypeIndex,
                   value: 1,
-                  id: id,
+                  id: `${id}_${activeSizeIndex}_${activeTypeIndex}`,
                 }))
               }
               else{

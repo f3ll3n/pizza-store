@@ -29,7 +29,7 @@ function Sort() {
     { name: "полярности", sortProperty: "rating" },
     { name: "полярности (по убыванию)", sortProperty: "-rating" },
     { name: "цене", sortProperty: "price" },
-    { name: "цене (по убыванию)", sortProperty: "-price" },
+    { name: "цене (по возрастанию)", sortProperty: "-price" },
     { name: "алфавиту", sortProperty: "title" },
   ];
 

@@ -7,7 +7,6 @@ import Categories from "../components/Categories/Categories";
 import Sort from "../components/Sort/Sort";
 import Pagination from "../components/Pagination/Pagination";
 import { setCurrentPage } from "../redux/slices/filterSlice";
-import { addItem } from "../redux/slices/cartSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
