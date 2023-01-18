@@ -4,7 +4,7 @@ import Search from "../Search/Search";
 import { useSelector } from "react-redux";
 
 function Header({ searchValue, setSearchValue }) {
-  const {items, totalPrice} = useSelector(state => state.cart);
+  const { totalPrice, pizzasCount } = useSelector(state => state.cart);
 
   return (
     <div className="header">
@@ -56,7 +56,7 @@ function Header({ searchValue, setSearchValue }) {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>{items.length}</span>
+            <span>{pizzasCount}</span>
           </Link>
         </div>
       </div>

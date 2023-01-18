@@ -6,24 +6,24 @@ import { setSort } from "../../redux/slices/filterSlice";
 function Sort() {
   const dispatch = useDispatch();
   const sort = useSelector(state => state.filter.sort);
-  
+
   const [open, setOpen] = useState(false);
 
-  const sortRef = useRef()
+  const sortRef = useRef();
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if(!event.path.includes(sortRef.current)){
-        setOpen(false)
+    const handleClickOutside = event => {
+      if (!event.path.includes(sortRef.current)) {
+        setOpen(false);
       }
     };
 
-    document.body.addEventListener('click', handleClickOutside);
+    document.body.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.body.removeEventListener('click', handleClickOutside);
-    }
-  }, [])
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const list = [
     { name: "полярности", sortProperty: "rating" },

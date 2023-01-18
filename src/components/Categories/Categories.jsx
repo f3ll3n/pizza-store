@@ -4,7 +4,7 @@ import { setCategory } from "../../redux/slices/filterSlice";
 
 function Categories() {
   const dispatch = useDispatch();
-  const categoryID = useSelector((state) => state.filter.category);
+  const categoryID = useSelector(state => state.filter.category);
 
   const categories = [
     "Все",

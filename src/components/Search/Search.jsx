@@ -7,35 +7,36 @@ import { setSearchValue } from "../../redux/slices/filterSlice";
 import styles from "./Search.module.scss";
 
 const Search = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   const dispatch = useDispatch();
   const inputRef = useRef();
 
+  //TODO: How to do arrow function into the first argument with dispatch scope.
   const updateSearchValue = useCallback(
-    debounce((str) => {
-      console.log('debounced: ' + str)
-      dispatch(setSearchValue(str))
+    debounce(str => {
+      console.log("debounced: " + str);
+      dispatch(setSearchValue(str));
     }, 400),
     [],
-  )
+  );
 
-  const onChangeInput = (event) => {
+  const onChangeInput = event => {
     setValue(event);
     updateSearchValue(event);
-  }
+  };
 
   const onClickClear = () => {
-    onChangeInput('');
-    inputRef.current.focus()
-  }
+    onChangeInput("");
+    inputRef.current.focus();
+  };
 
   return (
     <label className={styles.root}>
       <input
         ref={inputRef}
         value={value}
-        onChange={(event) => onChangeInput(event.target.value)}
+        onChange={event => onChangeInput(event.target.value)}
         className={styles.input}
         placeholder="Поиск пиццы ..."
       />
