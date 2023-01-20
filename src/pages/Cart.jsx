@@ -2,12 +2,15 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearItems } from "../redux/slices/cartSlice";
 import CartItem from "../components/CartItem/CartItem";
+import CartEmpty from "./CartEmpty";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { items, totalPrice, pizzasCount } = useSelector(state => state.cart);
-
+  if (!totalPrice) {
+    return <CartEmpty />;
+  }
   return (
     <div className="container container--cart">
       <div className="cart">
@@ -87,9 +90,7 @@ const Cart = () => {
         </div>
         <div className="content__items">
           {items.map((item, index) => {
-            return (
-              <CartItem key={item.id} item={item} index={index} />
-            );
+            return <CartItem key={item.id} item={item} index={index} />;
           })}
         </div>
         <div className="cart__bottom">

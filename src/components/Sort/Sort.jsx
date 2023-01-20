@@ -9,11 +9,11 @@ function Sort() {
 
   const [open, setOpen] = useState(false);
 
-  const sortRef = useRef();
+  const sortRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = event => {
-      if (!event.path.includes(sortRef.current)) {
+      if (!event.composedPath().includes(sortRef.current)) {
         setOpen(false);
       }
     };

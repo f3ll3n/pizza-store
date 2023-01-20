@@ -1,7 +1,7 @@
 import React from "react";
 import {
   removeItem,
-  incrementItem,
+  addItem,
   decrementItem,
 } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
@@ -12,28 +12,28 @@ export const CartItem = ({ item, index }) => {
 
   const onClickPlus = () => {
     dispatch(
-        incrementItem({
+      addItem({
+        price: item.price / item.value,
+        id: item.id,
+      }),
+    );
+  };
+
+  const onClickMinus = () => {
+    if (item.value > 1) {
+      dispatch(
+        decrementItem({
           price: item.price / item.value,
           index: index,
         }),
       );
-  }
-
-  const onClickMinus = () => {
-    if (item.value > 1) {
-        dispatch(
-          decrementItem({
-            price: item.price / item.value,
-            index: index,
-          }),
-        );
-      } else {
-        dispatch(removeItem({ id: item.id, index }));
+    } else {
+      dispatch(removeItem({ id: item.id, index }));
     }
-  }
+  };
   const onClickRemoveItem = () => {
-    dispatch(removeItem({ id: item.id, index }))
-  }
+    dispatch(removeItem({ id: item.id, index }));
+  };
 
   return (
     <div className="cart__item">
@@ -71,7 +71,7 @@ export const CartItem = ({ item, index }) => {
         <b>{item.value}</b>
         <div
           onClick={() => {
-            onClickPlus()
+            onClickPlus();
           }}
           className="button button--outline button--circle cart__item-count-plus"
         >

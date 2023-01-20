@@ -21,12 +21,7 @@ export const cartSlice = createSlice({
       state.pizzasCount += 1;
       state.totalPrice += action.payload.price;
     },
-    incrementItem: (state, action) => {
-      state.totalPrice += action.payload.price;
-      state.items[action.payload.index].price += action.payload.price;
-      state.items[action.payload.index].value += 1;
-      state.pizzasCount += 1;
-    },
+
     decrementItem: (state, action) => {
       state.totalPrice -= action.payload.price;
       state.items[action.payload.index].price -= action.payload.price;
@@ -46,7 +41,14 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addItem, incrementItem, decrementItem, removeItem, clearItems } =
+export const { addItem, decrementItem, removeItem, clearItems } =
   cartSlice.actions;
 
 export default cartSlice.reducer;
+
+// incrementItem: (state, action) => {
+//   state.totalPrice += action.payload.price;
+//   state.items[action.payload.index].price += action.payload.price;
+//   state.items[action.payload.index].value += 1;
+//   state.pizzasCount += 1;
+// },
