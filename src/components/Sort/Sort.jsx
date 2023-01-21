@@ -49,8 +49,7 @@ function Sort() {
           />
         </svg>
         <b>Сортировка по:</b>
-        {/*TODO: span to button */}
-        <span onClick={() => setOpen(!open)}>{sort.name}</span>
+        <button onClick={() => setOpen(!open)}>{sort.name}</button>
       </div>
       {open && (
         <div className="sort__popup">

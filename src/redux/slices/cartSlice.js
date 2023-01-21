@@ -41,14 +41,9 @@ export const cartSlice = createSlice({
   },
 });
 
+export const selectCart = state => state.cart;
+
 export const { addItem, decrementItem, removeItem, clearItems } =
   cartSlice.actions;
 
 export default cartSlice.reducer;
-
-// incrementItem: (state, action) => {
-//   state.totalPrice += action.payload.price;
-//   state.items[action.payload.index].price += action.payload.price;
-//   state.items[action.payload.index].value += 1;
-//   state.pizzasCount += 1;
-// },
