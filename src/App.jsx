@@ -3,10 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
+import FullPizza from "./pages/FullPizza";
 import NotFound from "./pages/NotFoundBlock/NotFound";
 import "./scss/app.scss";
 
-//№2 lesson: to kartoteka: npm устанавливает плагины, npx устанавливает js программы, запускает их и сразу после отработки удаляет.
 function App() {
   return (
     <div className="wrapper">
@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/pizza/:id" element={<FullPizza />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

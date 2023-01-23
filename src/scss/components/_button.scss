@@ -97,6 +97,8 @@
   }
 
   &--add {
+    position: relative;
+    z-index: 100;
     svg {
       margin-right: 2px;
     }
