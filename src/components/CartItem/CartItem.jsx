@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   removeItem,
   addItem,
@@ -37,15 +38,17 @@ export const CartItem = ({ item, index }) => {
 
   return (
     <div className="cart__item">
-      <div className="cart__item-img">
-        <img className="pizza-block__image" src={item.img} alt="Pizza" />
-      </div>
-      <div className="cart__item-info">
-        <h3>{item.title}</h3>
-        <p>
-          {typeNames[item.type]} тесто, {sizes[item.size]} см.
-        </p>
-      </div>
+      <Link to={`/pizza/${item.id.slice(0, 1)}`}>
+        <div className="cart__item-img">
+          <img className="pizza-block__image" src={item.img} alt="Pizza" />
+        </div>
+        <div className="cart__item-info">
+          <h3>{item.title}</h3>
+          <p>
+            {typeNames[item.type]} тесто, {sizes[item.size]} см.
+          </p>
+        </div>
+      </Link>
       <div className="cart__item-count">
         <div
           onClick={() => onClickMinus()}

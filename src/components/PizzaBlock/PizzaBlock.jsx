@@ -24,7 +24,6 @@ function PizzaBlock({ title, price, imageUrl, sizes, types, id }) {
           <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
           <h4 className="pizza-block__title">{title}</h4>
         </Link>
-
         <div className="pizza-block__selector">
           <ul>
             {types.map((type, index) => {
