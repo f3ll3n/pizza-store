@@ -6,7 +6,18 @@ import {
   decrementItem,
 } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
-export const CartItem = ({ item, index }) => {
+
+type ItemProps = {
+  title: string;
+  img: string;
+  price: number;
+  size: number;
+  type: number;
+  value: number;
+  id: string;
+}
+
+export const CartItem = ({ item, index }: {item: ItemProps, index: number}) => {
   const dispatch = useDispatch();
   const typeNames = ["тонкое", "традиционное"];
   const sizes = [26, 30, 40];

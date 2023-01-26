@@ -4,7 +4,7 @@ import Search from "../Search/Search";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/slices/cartSlice";
 
-function Header({ searchValue, setSearchValue }) {
+function Header() {
   const { totalPrice, pizzasCount } = useSelector(selectCart);
   const location = useLocation();
   return (
@@ -26,7 +26,7 @@ function Header({ searchValue, setSearchValue }) {
         {/* TODO: Fix search input */}
         {location.pathname !== "/cart" && (
           <>
-            <Search setSearchValue={setSearchValue} searchValue={searchValue} />
+            <Search />
             <div className="header__cart">
               <Link to="/cart" className="button button--cart">
                 <span>{totalPrice} ₽</span>

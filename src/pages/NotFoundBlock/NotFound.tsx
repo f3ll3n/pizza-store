@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./NotFound.module.scss";
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   console.log(styles);
   return (
     <div className={styles.root}>

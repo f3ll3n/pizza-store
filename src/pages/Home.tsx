@@ -26,7 +26,7 @@ const Home = () => {
     const categoryBy = category > 0 ? `category=${category}` : "";
     const searchBy = search ? `search=${search}` : "";
     dispatch(
-      fetchPizzas({ currentPage, categoryBy, sortBy, orderBy, searchBy }),
+      fetchPizzas({ currentPage, categoryBy, sortBy, orderBy, searchBy}),
     );
   }, [currentPage, category, sort, search, dispatch]);
 
@@ -74,7 +74,7 @@ const Home = () => {
       )}
       <Pagination
         currentPage={currentPage}
-        onChangePage={number => dispatch(setCurrentPage(number))}
+        onChangePage={(number: number) => dispatch(setCurrentPage(number))}
       />
     </div>
   );

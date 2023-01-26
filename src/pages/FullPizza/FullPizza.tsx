@@ -7,20 +7,20 @@ import styles from "./FullPizza.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/slices/cartSlice";
 
-const FullPizza = () => {
- 
+const FullPizza: React.FC =  () => {
   const dispatch = useDispatch()
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
   const [activeTypeIndex, setActiveTypeIndex] = useState(0);
+  //TODO: Применить isError
   const [isError, setIsError] = useState(false);
   const typeNames = ["тонкое", "традиционное"];
   const [currentId, setCurrentId] = useState("");
-  const [data, setData] = useState({});
-  const cartItem = useSelector(state =>
-    state.cart.items.find(obj => obj.id === currentId),
+  const [data, setData] = useState(Object);
+  const cartItem: {value: number} = useSelector((state: any) =>
+    state.cart.items.find((obj: { id: string; }) => obj.id === currentId),
   );
   const addedValue = cartItem ? cartItem.value : 0;
-
+  //TODO: Вынести в React здесь и в PizzaBlock
   useEffect(() => {
     setCurrentId(`${data.id}_${activeSizeIndex}_${activeTypeIndex}`);
   }, [data, activeTypeIndex, activeSizeIndex]);
@@ -59,7 +59,7 @@ const FullPizza = () => {
             <p>{data.description}</p>
             <div className="pizza-block__selector">
               <ul>
-                {data.types.map((type, index) => {
+                {data.types.map((type: number, index: number) => {
                   return (
                     <li
                       className={activeTypeIndex === index ? "active" : ""}
@@ -74,7 +74,7 @@ const FullPizza = () => {
                 })}
               </ul>
               <ul>
-                {data.sizes.map((size, index) => {
+                {data.sizes.map((size: any, index: number) => {
                   return (
                     <li
                       className={activeSizeIndex === index ? "active" : ""}
@@ -104,7 +104,6 @@ const FullPizza = () => {
                   value: 1,
                   id: currentId,
                 }),
-                console.log(currentId)
               );
             }} >
                <svg

@@ -3,33 +3,41 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
 
+
+
+
 function Sort() {
   const dispatch = useDispatch();
-  const sort = useSelector(state => state.filter.sort);
+  const sort = useSelector((state: any) => state.filter.sort);
 
   const [open, setOpen] = useState(false);
 
-  const sortRef = useRef(null);
+  const sortRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = event => {
+    const handleClickOutside = (event: any) => {
       if (!event.composedPath().includes(sortRef.current)) {
         setOpen(false);
+        console.log(event)
       }
     };
-
     document.body.addEventListener("click", handleClickOutside);
-
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
-  const list = [
+  type ListItem = {
+    name?: string,
+    sortProperty?: string;
+    index?: number;
+  }
+
+  const list: ListItem[] = [
     { name: "полярности", sortProperty: "rating" },
     { name: "полярности (по убыванию)", sortProperty: "-rating" },
-    { name: "цене", sortProperty: "price" },
-    { name: "цене (по возрастанию)", sortProperty: "-price" },
+    { name: "цене", sortProperty: "price"  },
+    { name: "цене (по возрастанию)", sortProperty: "-price"  },
     { name: "алфавиту", sortProperty: "title" },
   ];
 
