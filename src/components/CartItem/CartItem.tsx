@@ -8,16 +8,19 @@ import {
 import { useDispatch } from "react-redux";
 
 type ItemProps = {
-  title: string;
-  img: string;
-  price: number;
-  size: number;
-  type: number;
-  value: number;
-  id: string;
-}
+  item: {
+    title: string;
+    img: string;
+    price: number;
+    size: number;
+    type: number;
+    value: number;
+    id: string;
+  };
+  index: number;
+};
 
-export const CartItem = ({ item, index }: {item: ItemProps, index: number}) => {
+const CartItem: React.FC<ItemProps> = ({ item, index }) => {
   const dispatch = useDispatch();
   const typeNames = ["тонкое", "традиционное"];
   const sizes = [26, 30, 40];

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../redux/slices/filterSlice";
 
-function Categories() {
+const Categories: React.FC = () => {
   const dispatch = useDispatch();
   const categoryID = useSelector((state: any) => state.filter.category);
 
@@ -34,6 +34,6 @@ function Categories() {
       </ul>
     </div>
   );
-}
+};
 
 export default Categories;

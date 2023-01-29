@@ -1,4 +1,10 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
 
 import { useDispatch } from "react-redux";
 import debounce from "lodash.debounce";
@@ -6,29 +12,28 @@ import { setSearchValue } from "../../redux/slices/filterSlice";
 
 import styles from "./Search.module.scss";
 
-const Search = () => {
+const Search: React.FC = () => {
   const [value, setValue] = useState("");
 
   const dispatch = useDispatch();
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   //TODO: How to do arrow function into the first argument with dispatch scope.
   const updateSearchValue = useCallback(
-    debounce(str => {
-      console.log("debounced: " + str);
+    debounce((str: string) => {
       dispatch(setSearchValue(str));
     }, 400),
     [],
   );
 
-  const onChangeInput = event => {
+  const onChangeInput = (event: string) => {
     setValue(event);
     updateSearchValue(event);
   };
 
   const onClickClear = () => {
     onChangeInput("");
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   return (

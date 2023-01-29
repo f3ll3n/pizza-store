@@ -2,7 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 //#ecebeb
 
-const Skeleton = () => (
+const Skeleton: React.FC = () => (
   <div className="pizza-block_wrapper">
     <ContentLoader
       className="pizza-block"
@@ -20,6 +20,6 @@ const Skeleton = () => (
       <rect x="127" y="420" rx="23" ry="23" width="150" height="45" />
     </ContentLoader>
   </div>
-); 
+);
 
 export default Skeleton;

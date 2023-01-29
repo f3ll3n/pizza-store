@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "./NotFound.module.scss";
 
 const NotFound: React.FC = () => {
-  console.log(styles);
   return (
     <div className={styles.root}>
       <h1>

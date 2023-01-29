@@ -1,5 +1,5 @@
 .root {
-  .closePizza{
+  .closePizza {
     color: #fe5f1e;
     font-weight: bold;
     display: block;
@@ -8,29 +8,28 @@
   }
   width: calc(100% - 100px);
   margin: 20px auto;
-  .pizzaMain{
+  .pizzaMain {
     display: flex;
   }
-  .pizzaLeft{
+  .pizzaLeft {
     width: 50%;
-    .pizzaImg{
-        width: 90%
+    .pizzaImg {
+      width: 90%;
     }
-    
   }
-  .pizzaRight{
+  .pizzaRight {
     width: 50%;
 
-    h2{
-        margin: 5px 0;
+    h2 {
+      margin: 5px 0;
     }
-    p{
-        margin: 10px 0;
+    p {
+      margin: 10px 0;
     }
-    .price{
-        display: flex;
-        margin: 30px 0;
-        justify-content: space-between;
+    .price {
+      display: flex;
+      margin: 30px 0;
+      justify-content: space-between;
     }
   }
 }

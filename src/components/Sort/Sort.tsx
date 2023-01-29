@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { MouseEvent, useEffect, useRef, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
 
+type PopupClick = MouseEvent & {
+  composedPath: Function;
+  path: Node[];
+};
 
-
-
-function Sort() {
+const Sort: React.FC = () => {
   const dispatch = useDispatch();
   const sort = useSelector((state: any) => state.filter.sort);
 
@@ -16,9 +18,8 @@ function Sort() {
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (!event.composedPath().includes(sortRef.current)) {
+      if (!event.composedPath().includes(sortRef.current as EventTarget)) {
         setOpen(false);
-        console.log(event)
       }
     };
     document.body.addEventListener("click", handleClickOutside);
@@ -28,16 +29,16 @@ function Sort() {
   }, []);
 
   type ListItem = {
-    name?: string,
+    name?: string;
     sortProperty?: string;
     index?: number;
-  }
+  };
 
   const list: ListItem[] = [
     { name: "полярности", sortProperty: "rating" },
     { name: "полярности (по убыванию)", sortProperty: "-rating" },
-    { name: "цене", sortProperty: "price"  },
-    { name: "цене (по возрастанию)", sortProperty: "-price"  },
+    { name: "цене", sortProperty: "price" },
+    { name: "цене (по возрастанию)", sortProperty: "-price" },
     { name: "алфавиту", sortProperty: "title" },
   ];
 
@@ -82,6 +83,6 @@ function Sort() {
       )}
     </div>
   );
-}
+};
 
 export default Sort;

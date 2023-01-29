@@ -7,7 +7,7 @@ import FullPizza from "./pages/FullPizza/FullPizza";
 import NotFound from "./pages/NotFoundBlock/NotFound";
 import "./scss/app.scss";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="wrapper">
       <Header />
@@ -21,6 +21,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
