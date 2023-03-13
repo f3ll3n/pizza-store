@@ -1,4 +1,5 @@
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
+import { useWhyDidYouUpdate } from "ahooks";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
@@ -8,10 +9,9 @@ type PopupClick = MouseEvent & {
   path: Node[];
 };
 
-const Sort: React.FC = () => {
+const Sort: React.FC = React.memo(() => {
   const dispatch = useDispatch();
   const sort = useSelector((state: any) => state.filter.sort);
-
   const [open, setOpen] = useState(false);
 
   const sortRef = useRef<HTMLDivElement>(null);
@@ -83,6 +83,6 @@ const Sort: React.FC = () => {
       )}
     </div>
   );
-};
+});
 
 export default Sort;
