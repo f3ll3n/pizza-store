@@ -1,8 +1,14 @@
+@import url('../../scss/_variables.scss');
+
 .root {
+  min-height: 100%;
   text-align: center;
 
   span {
-    font-size: 84px;
+    font-size: 44px;
+  }
+  h1{
+    font-size: 36px;
   }
   p {
     font-size: 20px;
@@ -11,7 +17,19 @@
     margin: 0 auto;
   }
   .button {
+    color: #fe5f1e;
+    display: block;
+    border-radius: 20px;
+    width: 300px;
+    padding: 7px 0;
+    font-weight: 600;
+    margin: 30px auto;
+    border: 2px solid #fe5f1e;
     font-size: 22px;
-    margin: 30px 0 50px 0;
+    transition: .3s;
+    &:hover{
+      background-color: #fe5f1e;
+      color: white;
+    }
   }
 }

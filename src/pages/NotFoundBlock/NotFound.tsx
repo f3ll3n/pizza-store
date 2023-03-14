@@ -14,7 +14,7 @@ const NotFound: React.FC = () => {
         К сожалению данная страница отсутствует в нашем
         интернет&#8288;-&#8288;магазине
       </p>
-      <Link to="/" className="button button--outline button--add">
+      <Link to="/" className={styles.button}>
         Перейти на главную
       </Link>
     </div>
