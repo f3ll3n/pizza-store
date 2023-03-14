@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import styles from "./Header.module.scss";
 import Search from "../Search/Search";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/slices/cartSlice";
@@ -19,10 +20,10 @@ const Header: React.FC = () => {
 
   const location = useLocation();
   return (
-    <div className="header">
-      <div className="container">
+    <div className={styles.header}>
+      <div className={styles.container}>
         <Link to="/">
-          <div className="header__logo">
+          <div className={styles.logo}>
             <img
               width="38"
               src="./assets/img/pizza-logo.svg"

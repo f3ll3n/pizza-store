@@ -8,14 +8,12 @@ type TSort = {
 
 interface IFilterState {
   category: number;
-  currentPage: number;
   sort: TSort;
   search: string;
 }
 
 const initialState: IFilterState = {
   category: 0,
-  currentPage: 1,
   sort: {
     name: "полярности",
     sortProperty: "rating",
@@ -30,7 +28,6 @@ export const filterSlice = createSlice({
   reducers: {
     setCategory: (state, action) => {
       state.category = action.payload;
-      state.currentPage = 1;
     },
     setSort: (state, action) => {
       state.sort = action.payload;
@@ -39,14 +36,12 @@ export const filterSlice = createSlice({
       state.search = action.payload;
       state.category = 0;
     },
-    setCurrentPage: (state, action) => {
-      state.currentPage = action.payload;
-    },
+    
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setCategory, setSort, setSearchValue, setCurrentPage } =
+export const { setCategory, setSort, setSearchValue} =
   filterSlice.actions;
 
 export default filterSlice.reducer;

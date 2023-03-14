@@ -6,9 +6,9 @@ type FetchPizzasArgs = Record<string, string>;
 export const fetchPizzas = createAsyncThunk(
   "pizza/fetchPizzasStatus",
   async (params: FetchPizzasArgs) => {
-    const { currentPage, categoryBy, sortBy, orderBy, searchBy } = params;
+    const { categoryBy, sortBy, orderBy, searchBy } = params;
     const { data } = await axios.get(
-      `https://63ab80f2fdc006ba605f873f.mockapi.io/items?page=${currentPage}&limit=4&${categoryBy}&sortBy=${sortBy}&order=${orderBy}&${searchBy}`,
+      `https://63ab80f2fdc006ba605f873f.mockapi.io/items?&limit=4&${categoryBy}&sortBy=${sortBy}&order=${orderBy}&${searchBy}`,
     );
     return data;
   },

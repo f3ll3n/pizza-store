@@ -2,13 +2,10 @@ import React, { useEffect } from "react";
 
 import { useSelector } from "react-redux";
 import { fetchPizzas } from "../redux/slices/pizzasSlice";
-import { setCurrentPage } from "../redux/slices/filterSlice";
-
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Categories from "../components/Categories/Categories";
 import Sort from "../components/Sort/Sort";
-import Pagination from "../components/Pagination/Pagination";
 import { useAppDispatch } from "../redux/store";
 
 const Home: React.FC = () => {
@@ -72,10 +69,6 @@ const Home: React.FC = () => {
           )}
         </div>
       )}
-      <Pagination
-        currentPage={currentPage}
-        onChangePage={(number: number) => dispatch(setCurrentPage(number))}
-      />
     </div>
   );
 };

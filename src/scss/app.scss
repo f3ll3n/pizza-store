@@ -125,6 +125,7 @@ body {
 
 .cart {
   &__top {
+    display: flex;
     justify-content: space-between;
     align-items: center;
   }
@@ -182,16 +183,25 @@ body {
   }
   &__item {
     display: flex;
+    @media screen and (max-width: 500px){
+     
+      .cart__item-info p {
+        font-size: 12px;
+      }
+       .cart__item-count{
+        width: 80px;
+       }
+    }
+    justify-content: space-between;
     width: 100%;
     border-top: 1px solid $gray-line;
     padding-top: 30px;
     margin-top: 30px;
+    a{
+      width: 33%;
 
+    }
     &-img {
-      display: flex;
-      align-items: center;
-      margin-right: 15px;
-      width: 10%;
 
       img {
         width: 80px;
@@ -203,7 +213,7 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 40%;
+      width: 90%;
 
       h3 {
         font-weight: bold;
@@ -222,7 +232,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 13%;
+      width: 110px;
 
       &-minus {
         svg {
@@ -278,6 +288,9 @@ body {
         &:active {
           border-color: darken($color: $gray-line, $amount: 80);
           background-color: darken($color: $gray-line, $amount: 80);
+        }
+        @media screen and (max-width: 500px) {
+          font-size: 10px;
         }
       }
     }
